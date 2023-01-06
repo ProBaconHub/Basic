@@ -1,0 +1,21 @@
+game.StarterGui:SetCore("SendNotification", {
+           Icon = " ";
+            Title = "Pro Bacon",
+            Text = "TP Tool loaded"
+})
+
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+local Tool = Instance.new("Tool")
+
+Tool.RequiresHandle = false
+Tool.Name = "TP Tool"
+
+Tool.Activated:Connect(function()
+    local Root = Player.Character.HumanoidRootPart
+    local Pos = Mouse.Hit.Position+Vector3.new(0,2.5,0)
+    local Offset = Pos-Root.Position
+    Root.CFrame = Root.CFrame+Offset
+end)
+
+Tool.Parent = Player.Backpack
